@@ -10,6 +10,7 @@
 #define G_GRV   LGUI(KC_GRV)
 #define SftEnt  SFT_T(KC_ENT)
 #define NAV     LT(2, KC_TAB)
+#define HMRSP   LCAG_T(KC_DEL) // Ctrl+Alt+Gui is the basis for my Hammerspoon chords
 
 #define _COLEMAK 0
 #define _SYMBOL 1
@@ -40,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_GESC, KC_Q   , KC_W   , KC_F   , KC_P   , KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
   NAV    , KC_A   , KC_R   , KC_S   , KC_T   , KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
   SftLck , KC_Z   , KC_X   , KC_C   , KC_V   , KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SftEnt ,
-  KC_DEL , KC_LGUI, KC_LCTL, KC_LALT, KC_LGUI, KC_SPC,  KC_SPC,  MO(1),   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+  HMRSP  , KC_LGUI, KC_LCTL, KC_LALT, KC_LGUI, KC_SPC,  KC_SPC,  MO(1),   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
   ),
 
 /* Symbol
@@ -49,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * |  \|  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  |  =+  |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      | Home | End  | ScUp | ScDn | BRMD | BRMU |  -_  |Pg Up |      |   /  |      |
+ * |      | Home | End  |      |      | BRMD | BRMU |  -_  |Pg Up |      |   /  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |  `~  |      |      |      |Alt(Bk)|            |      |Pg Dn | Vol- | Vol+ |      |
  * `-----------------------------------------------------------------------------------'
@@ -58,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LBRC, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_RBRC,
   KC_BSLS, KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_EQL ,
   _______, KC_HOME, KC_END , _______, _______, KC_BRMD, KC_BRMU, KC_MINS, KC_PGUP, _______, _______, _______,
-  KC_GRV,  _______, _______, _______, A_BSPC , _______, _______, _______, KC_PGDN, KC_VOLD, KC_VOLU, KC_MUTE
+  KC_GRV,  _______, _______, _______, _______ , _______, _______, _______, KC_PGDN, KC_VOLD, KC_VOLU, KC_MUTE
   ),
 
 /* Navigation*/
@@ -66,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_NAVIGATION] = LAYOUT_planck_grid(
     _______, _______, _______, _______, _______, _______, C_TAB  , A_LEFT,  KC_UP,   A_RGHT , KC_DEL , _______,
     _______, _______, _______, _______, _______, _______, GSL    , KC_LEFT, KC_DOWN, KC_RGHT, GSR    , _______,
-    _______, _______, _______, _______, _______, _______, G_TAB  , KC_HOME, _______, KC_END,  G_GRV  , _______,
+    _______, _______, _______, _______, _______, _______, G_TAB  , A_BSPC , KC_HOME, KC_END,  G_GRV  , _______,
     RESET  , _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 )
 };
