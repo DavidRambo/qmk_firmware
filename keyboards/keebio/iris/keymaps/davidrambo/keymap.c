@@ -14,8 +14,8 @@
 #define MAC  TO(0)
 // #define PC   TO(1)
 #define GM   TO(2)
-// #define NAVMAC LT(4, KC_TAB)
-// #define NAVPC  LT(5, KC_TAB)
+#define MACNAV LT(4, KC_TAB)
+#define PCNAV  LT(5, KC_TAB)
 
 //text editor shortcuts for NAV and NAVPC
 #define AL   LALT(KC_LEFT)
@@ -37,17 +37,16 @@
 #define G_TAB LGUI(KC_TAB)
 #define A_TAB LALT(KC_TAB)
 
-//#define SFLK TD(SFT_LCK)     // alias for tapdance
+#define SFLK TD(SFT_LCK)     // alias for tapdance
 
 enum custom_keycodes {
-//	SFT_LCK //tapdance declarations
+    SFT_LCK, //tapdance declarations
     COLEMAK = 0,
     PC,
     GAME,
     SYMBOL,
     NAV, //Navigation layer for Mac Colemak
     NAVPC, //Navigation layer for PC Colemak
-//    SFT_LCK //tapdance declaration
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -58,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
      KC_GRV, KC_Q, KC_W, KC_F, KC_P, KC_G,       KC_J, KC_L, KC_U, KC_Y,KC_SCLN,KC_BSPC,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-   LT(4, KC_TAB), KC_A, KC_R, KC_S, KC_T, KC_D,         KC_H, KC_N, KC_E, KC_I, KC_O,KC_QUOT,
+   MACNAV, KC_A, KC_R, KC_S, KC_T, KC_D,         KC_H, KC_N, KC_E, KC_I, KC_O,KC_QUOT,
   //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
     KC_LSFT, KC_Z, KC_X, KC_C,KC_V,KC_B, TO(1),  KC_ENT, KC_K, KC_M,KC_COMM, KC_DOT,KC_SLSH,KC_RSFT,
   //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
@@ -71,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         
     ___ , ___ , ___ , ___ , ___ , ___ ,          ___ , ___ , ___ , ___ , ___ , ___ ,
         
-    LT(5, KC_TAB),___ , ___ , ___ , ___ , ___ ,          ___ , ___ , ___ , ___ , ___ , ___ ,
+    PCNAV,___ , ___ , ___ , ___ , ___ ,          ___ , ___ , ___ , ___ , ___ , ___ ,
         
     ___ , ___ , ___ , ___ , ___ , ___ , GM, ___, ___ , ___ , ___ , ___ , ___ , ___ , 
         
@@ -132,7 +131,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 // Shift vs. capslock function. From bbaserdem's Planck keymap (since deprecated).
-/*void caps_tap (qk_tap_dance_state_t *state, void *user_data) {
+void caps_tap (qk_tap_dance_state_t *state, void *user_data) {
     if (state->count == 1) {
         register_code (KC_LSFT);
     } else if (state->count == 2) {
@@ -152,4 +151,3 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     //Tap once for Shift, twice for Caps Lock
     [SFT_LCK] = ACTION_TAP_DANCE_FN_ADVANCED( caps_tap, NULL, caps_tap_end)
 };
-*/
