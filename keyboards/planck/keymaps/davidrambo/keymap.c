@@ -4,8 +4,8 @@
 #define A_LEFT  LALT(KC_LEFT)
 #define A_RGHT  LALT(KC_RGHT)
 #define C_TAB   LCTL(KC_TAB)
-#define GSL     LGUI(S(KC_LEFT))
-#define GSR     LGUI(S(KC_RGHT))
+#define CTLPGUP LCTL(KC_PGUP) // back one tab in Brave
+#define CTLPGDN LCTL(KC_PGDN) // forward one tab in Brave
 #define G_TAB   LGUI(KC_TAB)
 #define G_GRV   LGUI(KC_GRV)
 #define SftEnt  SFT_T(KC_ENT)
@@ -66,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_NAVIGATION] = LAYOUT_planck_grid(
     _______, _______, _______, _______, _______, _______, C_TAB  , A_LEFT,  KC_UP,   A_RGHT , KC_DEL , _______,
-    _______, _______, _______, _______, _______, _______, GSL    , KC_LEFT, KC_DOWN, KC_RGHT, GSR    , _______,
+    _______, _______, _______, _______, _______, _______, CTLPGUP, KC_LEFT, KC_DOWN, KC_RGHT, CTLPGDN, _______,
     _______, _______, _______, _______, _______, _______, G_TAB  , A_BSPC , KC_HOME, KC_END,  G_GRV  , _______,
     RESET  , _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 )
