@@ -10,7 +10,7 @@
 #define G_GRV   LGUI(KC_GRV)
 #define SftEnt  SFT_T(KC_ENT)
 #define NAV     LT(2, KC_TAB)
-#define HMRSP   LCAG_T(KC_DEL) // Ctrl+Alt+Gui is the basis for my Hammerspoon chords
+#define RECT    LCA_T(KC_DEL) // Ctrl+Alt is the basis for Rectangle WM shortcuts
 
 #define _COLEMAK 0
 #define _SYMBOL 1
@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_GESC, KC_Q   , KC_W   , KC_F   , KC_P   , KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
   NAV    , KC_A   , KC_R   , KC_S   , KC_T   , KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
   SftLck , KC_Z   , KC_X   , KC_C   , KC_V   , KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SftEnt ,
-  HMRSP  , KC_LGUI, KC_LCTL, KC_LALT, KC_LGUI, KC_SPC,  KC_SPC,  MO(1),   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+  RECT   , KC_LGUI, KC_LCTL, KC_LALT, KC_LGUI, KC_SPC,  KC_SPC,  MO(1),   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
   ),
 
 /* Symbol
@@ -59,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LBRC, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_RBRC,
   KC_BSLS, KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_EQL ,
   _______, KC_HOME, KC_END , _______, _______, KC_BRMD, KC_BRMU, KC_MINS, KC_PGUP, _______, _______, _______,
-  KC_GRV,  _______, _______, _______, _______ , _______, _______, _______, KC_PGDN, KC_VOLD, KC_VOLU, KC_MUTE
+  _______, KC_GRV , _______, _______, _______ , _______, _______, _______, KC_PGDN, KC_VOLD, KC_VOLU, KC_MUTE
   ),
 
 /* Navigation*/
