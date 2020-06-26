@@ -10,7 +10,7 @@
 #define SftEnt  SFT_T(KC_ENT)
 #define BS_GUI  LGUI_T(KC_BSPC)
 #define BS_CTL  LCTL_T(KC_BSPC)
-#define HMRSP   LCAG_T(KC_DEL) // Ctrl+Alt+Gui is the basis for my Hammerspoon chords
+#define RECT    LCA_T(KC_DEL) // Ctrl+Alt is the basis for Rectangle WM
 
 // internet browser tab shortcuts and window/application swapping for Mac and Win
 #define GSL     LGUI(S(KC_LEFT)) // back one tab in Safari
@@ -63,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_GESC, KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC, \
   NAVMAC , KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT, \
   SftLck , KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SftEnt , \
-  HMRSP  , KC_RCTL, KC_LGUI, KC_LCTL, KC_LALT, BS_GUI,  KC_SPC,  MO(3),   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+  RECT   , KC_RCTL, KC_LGUI, KC_LCTL, KC_LALT, BS_GUI,  KC_SPC,  MO(3),   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
   ),
   
 [_PC] = LAYOUT_preonic_grid( \
