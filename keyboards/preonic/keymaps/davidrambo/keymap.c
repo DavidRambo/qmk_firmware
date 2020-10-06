@@ -25,17 +25,18 @@
 #define C_TAB   LCTL(KC_TAB)
 
 // navigation layers for both Mac OS X and Windows
-#define NAVMAC  LT(4, KC_TAB)
-#define NAVPC   LT(5, KC_TAB)
-#define NAVQUD  LT(6, KC_TAB)
+#define NAVMAC  LT(5, KC_TAB)
+#define NAVPC   LT(6, KC_TAB)
+#define NAVQUD  LT(7, KC_TAB)
 
 #define _COLEMAK 0
 #define _PC 1
 #define _QUD 2
-#define _SYMBOL 3
-#define _NAVMAC 4
-#define _NAVPC 5
-#define _NAVQUD 6
+#define _GAME 3
+#define _SYMBOL 4
+#define _NAVMAC 5
+#define _NAVPC 6
+#define _NAVQUD 7
 
 //tapdance declarations
 enum {
@@ -65,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_GESC, KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC, \
   NAVMAC , KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT, \
   SftLck , KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SftEnt , \
-  RECT   , KC_RCTL, KC_LGUI, KC_LCTL, KC_LALT,ESC_GUI,  KC_SPC,  MO(3),   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+  RECT   , KC_RCTL, KC_LGUI, KC_LCTL, KC_LALT,ESC_GUI,  KC_SPC,  MO(4),   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
   ),
   
 [_PC] = LAYOUT_preonic_grid( \
@@ -73,15 +74,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
   NAVPC  , _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-  KC_DEL , KC_PSCR, KC_LCTL, KC_LALT, KC_LGUI,ESC_CTL , KC_SPC,  MO(3),   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+  KC_DEL , KC_PSCR, KC_LCTL, KC_LALT, KC_LGUI,ESC_CTL , KC_SPC,  MO(4),   _______, _______, _______, _______
   ),
   
 [_QUD] = LAYOUT_preonic_grid( \
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, TO(0)  , \
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, TO(3)  , \
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
   NAVQUD , _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-  KC_DEL , KC_PSCR, KC_LGUI, KC_LALT, KC_LCTL, NAVQUD , KC_SPC,  MO(3),   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+  KC_DEL , KC_PSCR, KC_LGUI, KC_LALT, KC_LCTL, NAVQUD , KC_SPC,  MO(4)  , _______, _______, _______, _______
+  ),
+
+[_GAME] = LAYOUT_preonic_grid( \
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, TO(0)  , \
+  KC_ESC , KC_T   , KC_Q   , KC_W   , KC_E   , KC_R   , KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , _______, \
+  KC_TAB , KC_LSFT, KC_A   , KC_S   , KC_D   , KC_F   , KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, _______, \
+  KC_LALT, KC_LCTL, KC_Z   , KC_X   , KC_C   , KC_V   , KC_N   , KC_M   , _______, _______, _______, _______, \
+  _______, _______, _______, KC_G   , KC_B   , KC_SPC , KC_I   , MO(4)  , _______, _______, _______, _______
   ),
 
 /* Symbol
