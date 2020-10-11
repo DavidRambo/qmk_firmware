@@ -19,8 +19,8 @@ extern uint8_t is_master;
 #define BS_CTL  LCTL_T(KC_BSPC)
 #define C_TAB   LCTL(KC_TAB)
 #define A_TAB LALT(KC_TAB)
-#define VOLU KC__VOLUP
-#define VOLD KC__VOLDOWN
+#define VOLU KC_AUDIO_VOL_UP
+#define VOLD KC_AUDIO_VOL_DOWN
 
 //aliases for Navigation layer
 #define CBSPC LCTL(KC_BSPC) // delete whole word in PC
