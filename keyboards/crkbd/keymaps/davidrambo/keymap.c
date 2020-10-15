@@ -19,8 +19,8 @@ extern uint8_t is_master;
 #define BS_CTL  LCTL_T(KC_BSPC)
 #define C_TAB   LCTL(KC_TAB)
 #define A_TAB LALT(KC_TAB)
-#define VOLU KC_AUDIO_VOL_UP
-#define VOLD KC_AUDIO_VOL_DOWN
+#define VOLU KC__VOLUP
+#define VOLD KC__VOLDOWN
 
 //aliases for Navigation layer
 #define CBSPC LCTL(KC_BSPC) // delete whole word in PC
@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, SftEnt,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LALT, KC_LGUI,  BS_CTL,     KC_SPC,     SYM,   FKEY \
+                                          KC_LALT, KC_LGUI, BS_CTL,     KC_SPC,     SYM,   FKEY \
                                       //`--------------------------'  `--------------------------'
 
   ),
