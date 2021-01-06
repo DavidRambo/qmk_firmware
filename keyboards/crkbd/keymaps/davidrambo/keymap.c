@@ -10,8 +10,7 @@ extern uint8_t is_master;
 //keycode shorthands
 #define ___  KC_TRNS // three underscores "___" for transparent
 #define SYM  MO(1)
-#define NAV  LT(2, KC_TAB)
-#define NAVT LT(2, KC_T)
+#define NAV  LT(2, KC_ESC)
 #define FKEY MO(3)
 
 //aliases for clarity in layering
@@ -37,7 +36,7 @@ extern uint8_t is_master;
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      KC_GESC,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,                         KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN, KC_BSPC,\
+      KC_TAB,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,                         KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN, KC_BSPC,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        NAV   ,    KC_A,    KC_R,    KC_S,    KC_T,    KC_D,                         KC_H,    KC_N,    KC_E,    KC_I, KC_O   , KC_QUOT,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
