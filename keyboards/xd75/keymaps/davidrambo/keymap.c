@@ -24,8 +24,8 @@
 #define C_TAB   LCTL(KC_TAB)
 
 // navigation layers for both Mac OS X and Windows
-#define NAV     LT(5, KC_TAB)
-#define NAVPC   LT(6, KC_TAB)
+#define NAV     LT(5, KC_ESC)
+#define NAVPC   LT(6, KC_ESC)
 #define NAVQUD  MO(7)
 
 // Layer shorthand
@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
  [_COLEMAK] = LAYOUT_ortho_5x15( /* COLEMAK */
    KC_GRV , KC_1,    KC_2,    KC_3,    KC_4,    KC_5,   KC_MINS, TO(1)  , KC_EQL,  KC_6,   KC_7,   KC_8,    KC_9,    KC_0,    KC_BSPC,
-   KC_GESC, KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,   KC_LBRC, KC_BSLS, KC_RBRC, KC_J,   KC_L,   KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
+   KC_TAB , KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,   KC_LBRC, KC_BSLS, KC_RBRC, KC_J,   KC_L,   KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
    NAV    , KC_A,    KC_R,    KC_S,    KC_T,    KC_D,   KC_PGUP, KC_MPLY, KC_ENT , KC_H,   KC_N,   KC_E,    KC_I,    KC_O,    KC_QUOT,
    SftLck , KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_PGDN, KC_UP  , KC_ENT , KC_K,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, SftEnt ,
    KC_DEL , KC_LGUI, KC_LCTL, KC_LALT, KC_LCTL, BS_GUI, KC_LEFT, KC_DOWN, KC_RGHT, KC_SPC, MO(4) , KC_RGUI, KC_RALT, KC_RCTL, BL_STEP
@@ -77,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
    NAVPC  , _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-   _______, KC_LCTL, KC_LGUI, _______, KC_LGUI, BS_CTL , _______, _______, _______, _______, _______, KC_RCTL, _______, KC_RGUI, _______
+   _______, KC_PSCR, KC_LGUI, _______, KC_LGUI, BS_CTL , _______, _______, _______, _______, _______, KC_RCTL, _______, KC_RGUI, _______
  ),
 
  [_GAME] = LAYOUT_ortho_5x15( /* Gaming Layer */
