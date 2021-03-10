@@ -1,42 +1,40 @@
 #include QMK_KEYBOARD_H
 
 //aliases for clarity in layering
-#define A_BSPC  LALT(KC_BSPC) // delete whole word in Mac
-#define C_BSPC  LCTL(KC_BSPC) // delete whole word in PC
-#define A_LEFT  LALT(KC_LEFT)
-#define A_RGHT  LALT(KC_RGHT)
-#define C_RGHT  LCTL(KC_RGHT)
-#define C_LEFT  LCTL(KC_LEFT)
-#define SftEnt  SFT_T(KC_ENT)
-#define BS_GUI  LGUI_T(KC_BSPC)
-#define BS_CTL  LCTL_T(KC_BSPC)
-#define VOLU KC__VOLUP
-#define VOLD KC__VOLDOWN
+#define KC_ABSPC  LALT(KC_BSPC) // delete whole word in Mac
+#define KC_CBSPC  LCTL(KC_BSPC) // delete whole word in PC
+#define KC_ALEFT  LALT(KC_LEFT)
+#define KC_ARGHT  LALT(KC_RGHT)
+#define KC_CRGHT  LCTL(KC_RGHT)
+#define KC_CLEFT  LCTL(KC_LEFT)
+#define KC_SftEnt SFT_T(KC_ENT)
+#define KC_BSGUI  LGUI_T(KC_BSPC)
+#define KC_BSCTL  LCTL_T(KC_BSPC)
 
 // internet browser tab shortcuts and window/application swapping for Mac and Win
-#define GSL     LGUI(S(KC_LEFT)) // back one tab in Safari
-#define GSR     LGUI(S(KC_RGHT)) // forward one tab in Safari
-#define CTLPGDN LCTL(KC_PGDN)   // back one tab on Windows
-#define CTLPGUP LCTL(KC_PGUP)   // forward one tab on Windows
-#define G_TAB   LGUI(KC_TAB)    // Mac: switch applications
-#define G_GRV   LGUI(KC_GRV)    // Mac: switch between windows within an application
-#define A_TAB   LALT(KC_TAB)
-#define C_TAB   LCTL(KC_TAB)
+#define KC_GSL    LGUI(S(KC_LEFT)) // back one tab in Safari
+#define KC_GSR    LGUI(S(KC_RGHT)) // forward one tab in Safari
+#define KC_CPGD    LCTL(KC_PGDN)   // back one tab on PC
+#define KC_CPGU    LCTL(KC_PGUP)   // forward one tab on PC
+#define KC_GTAB   LGUI(KC_TAB)    // Mac: switch applications
+#define KC_GGRV   LGUI(KC_GRV)    // Mac: switch between windows within an application
+#define KC_ATAB   LALT(KC_TAB)
+#define KC_CTAB   LCTL(KC_TAB)
 
-// navigation layers for both Mac OS X and Windows
-#define NAV     LT(5, KC_ESC)
-#define NAVPC   LT(6, KC_ESC)
-#define NAVQUD  MO(7)
+// navigation layers for both Mac OS X and PC
+#define KC_NAV     LT(5, KC_ESC)
+#define KC_NAVPC   LT(6, KC_ESC)
+#define KC_NAVQUD  MO(7)
 
 // Layer shorthand
 #define _COLEMAK 0
 #define _PC 1
 #define _GAME 2     // Gaming layer
-#define _QUD  3
+#define _QUD  3     // Roguelike layer
 #define _SYMBOL 4   // Function keys, numbers, symbols, Backlighting
-#define _NAV 5   // Navigation Layer on Mac
-#define _NAVPC 6 // Navigation Layer on Win
-#define _NAVQUD 7
+#define _NAV 5      // Navigation Layer on Mac
+#define _NAVPC 6    // Navigation Layer on Win
+#define _NAVQUD 7   // Numpad for Roguelike 8-directional movement
 
 // tapdance declarations
 enum {
@@ -44,7 +42,7 @@ enum {
 };
 
 // alias for tapdance
-#define SftLck TD(SFT_LCK)
+#define KC_SftLck TD(SFT_LCK)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -65,9 +63,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [_COLEMAK] = LAYOUT_ortho_5x15( /* COLEMAK */
    KC_GRV , KC_1,    KC_2,    KC_3,    KC_4,    KC_5,   KC_MINS, TO(1)  , KC_EQL,  KC_6,   KC_7,   KC_8,    KC_9,    KC_0,    KC_BSPC,
    KC_TAB , KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,   KC_LBRC, KC_BSLS, KC_RBRC, KC_J,   KC_L,   KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
-   NAV    , KC_A,    KC_R,    KC_S,    KC_T,    KC_D,   KC_PGUP, KC_MPLY, KC_ENT , KC_H,   KC_N,   KC_E,    KC_I,    KC_O,    KC_QUOT,
-   SftLck , KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_PGDN, KC_UP  , KC_ENT , KC_K,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, SftEnt ,
-   KC_DEL , KC_LGUI, KC_LCTL, KC_LALT, KC_LCTL, BS_GUI, KC_LEFT, KC_DOWN, KC_RGHT, KC_SPC, MO(4) , KC_RGUI, KC_RALT, KC_RCTL, BL_STEP
+   KC_NAV , KC_A,    KC_R,    KC_S,    KC_T,    KC_D,   KC_PGUP, KC_MPLY, KC_GGRV, KC_H,   KC_N,   KC_E,    KC_I,    KC_O,    KC_QUOT,
+  KC_SftLck,KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_PGDN, KC_UP  , KC_GTAB , KC_K,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_SftEnt,
+   KC_DEL , KC_LGUI, KC_LCTL, KC_LALT, KC_LCTL,KC_BSGUI,KC_LEFT, KC_DOWN, KC_RGHT, KC_SPC, MO(4) , KC_RGUI, KC_RALT, KC_RCTL, BL_STEP
  ),
     
 // Windows Layer: essentially swaps Control and GUI
@@ -75,9 +73,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [_PC] = LAYOUT_ortho_5x15( /* WINDOWS */
    _______, _______, _______, _______, _______, _______, _______, TO(2)  , _______, _______, _______, _______, _______, _______, _______,
    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-   NAVPC  , _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-   _______, KC_PSCR, KC_LGUI, _______, KC_LGUI, BS_CTL , _______, _______, _______, _______, _______, KC_RCTL, _______, KC_RGUI, _______
+   KC_NAVPC,_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+   _______, _______, _______, _______, _______, _______, _______, _______, KC_ATAB, _______, _______, _______, _______, _______, _______,
+   _______, KC_PSCR, KC_LGUI, _______, KC_LGUI, KC_BSCTL,_______, _______, _______, _______, _______, KC_RCTL, _______, KC_RGUI, _______
  ),
 
  [_GAME] = LAYOUT_ortho_5x15( /* Gaming Layer */
@@ -89,10 +87,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  ),
   
    [_QUD] = LAYOUT_ortho_5x15( /* Roguelike Layer */
-   _______, _______, _______, _______, _______, _______, _______,KC_PSLS, KC_PAST, _______, _______, _______, _______, _______, TO(0)  ,
+   _______, _______, _______, _______, _______, _______, _______,KC_PSLS, KC_PAST, _______, _______, _______, _______, _______, TO(0),
    KC_GESC, KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,   KC_LBRC, KC_BSLS, KC_RBRC, KC_J,   KC_L,   KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
-   NAV    , KC_A,    KC_R,    KC_S,    KC_T,    KC_D,   KC_PGUP, KC_MPLY, KC_ENT , KC_H,   KC_N,   KC_E,    KC_I,    KC_O,    KC_QUOT,
-   SftLck , KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_PGDN, KC_UP  , KC_ENT , KC_K,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, SftEnt ,
+   KC_NAV , KC_A,    KC_R,    KC_S,    KC_T,    KC_D,   KC_PGUP, KC_MPLY, KC_ENT , KC_H,   KC_N,   KC_E,    KC_I,    KC_O,    KC_QUOT,
+  KC_SftLck,KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_PGDN, KC_UP  , KC_ENT , KC_K,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_SftEnt,
    KC_DEL , KC_LGUI, KC_LGUI, KC_LALT, KC_LCTL, MO(7),  KC_LEFT, KC_DOWN, KC_RGHT, KC_SPC, MO(4) , KC_RGUI, KC_RALT, KC_RCTL, _______
  ),
     
@@ -114,24 +112,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    KC_F12 , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , _______, _______, _______, KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 ,
    KC_LBRC, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , _______, _______, _______, KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_RBRC,
    _______, KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC, _______, _______, _______, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_EQL ,
-   _______, KC_HOME, KC_END , BL_OFF , BL_ON  , VOLD   , _______, _______, _______, VOLU   , KC_MINS, _______, _______, _______, _______,
+   _______, KC_HOME, KC_END , BL_OFF , BL_ON  , KC_VOLD, _______, _______, _______, KC_VOLU, KC_MINS, _______, _______, _______, _______,
    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
  ),
 
  
  [_NAV] = LAYOUT_ortho_5x15( /* NAVIGATION for Mac */
    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-   _______, _______, _______, _______, _______, _______, _______, _______, _______, C_TAB  , A_LEFT,  KC_UP,   A_RGHT , KC_DEL , _______,
-   _______, _______, _______, _______, _______, _______, _______, _______, _______, CTLPGUP, KC_LEFT, KC_DOWN, KC_RGHT, CTLPGDN, _______,
-   _______, _______, _______, _______, _______, _______, _______, _______, _______, G_TAB  , A_BSPC , KC_HOME, KC_END , G_GRV  , _______,
+   _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_CTAB,KC_ALEFT, KC_UP,  KC_ARGHT, KC_DEL , _______,
+   _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_CPGU, KC_LEFT, KC_DOWN, KC_RGHT, KC_CPGD, _______,
+   _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_GTAB,KC_ABSPC, KC_HOME, KC_END , KC_GGRV, _______,
    RESET  , _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
  ),
 
- [_NAVPC] = LAYOUT_ortho_5x15( /* NAVIGATION FOR WINDOWS: replaces Alt with Control, GUI with Alt, and browser tab shortcuts*/
+ [_NAVPC] = LAYOUT_ortho_5x15( /* NAVIGATION FOR PC: replaces Alt with Control, GUI with Alt, and browser tab shortcuts*/
    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-   _______, _______, _______, _______, _______, _______, _______, _______, _______, C_TAB  , C_LEFT,  KC_UP,   C_RGHT , KC_DEL , _______,
-   _______, _______, _______, _______, _______, _______, _______, _______, _______, CTLPGUP, KC_LEFT, KC_DOWN, KC_RGHT, CTLPGDN, _______,
-   _______, _______, _______, _______, _______, _______, _______, _______, _______, A_TAB  , C_BSPC , KC_HOME, KC_END , _______, _______,
+   _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_CTAB,KC_CLEFT, KC_UP,  KC_CRGHT, KC_DEL , _______,
+   _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_CPGU, KC_LEFT, KC_DOWN, KC_RGHT, KC_CPGD, _______,
+   _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_ATAB, KC_CBSPC,KC_HOME, KC_END , _______, _______,
    RESET  , _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
  ),
     
