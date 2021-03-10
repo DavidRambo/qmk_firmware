@@ -1,16 +1,16 @@
 #include QMK_KEYBOARD_H
 
-#define KC_A_BSPC  LALT(KC_BSPC)
-#define KC_A_LEFT  LALT(KC_LEFT)
-#define KC_A_RGHT  LALT(KC_RGHT)
-#define KC_C_TAB   LCTL(KC_TAB)
-#define KC_CTLPGUP LCTL(KC_PGUP) // back one tab in Brave
-#define KC_CTLPGDN LCTL(KC_PGDN) // forward one tab in Brave
-#define KC_G_TAB   LGUI(KC_TAB)
-#define KC_G_GRV   LGUI(KC_GRV)
-#define KC_SftEnt  SFT_T(KC_ENT)
-#define KC_NAV     LT(2, KC_TAB)
-#define KC_RECT    LCA_T(KC_DEL) // Ctrl+Alt is the basis for Rectangle WM shortcuts
+#define A_BSPC  LALT(KC_BSPC)
+#define A_LEFT  LALT(KC_LEFT)
+#define A_RGHT  LALT(KC_RGHT)
+#define C_TAB   LCTL(KC_TAB)
+#define CTLPGUP LCTL(KC_PGUP) // back one tab in Brave
+#define CTLPGDN LCTL(KC_PGDN) // forward one tab in Brave
+#define G_TAB   LGUI(KC_TAB)
+#define G_GRV   LGUI(KC_GRV)
+#define SftEnt  SFT_T(KC_ENT)
+#define NAV     LT(2, KC_TAB)
+#define RECT    LCA_T(KC_DEL) // Ctrl+Alt is the basis for Rectangle WM shortcuts
 
 #define _COLEMAK 0
 #define _SYMBOL 1
@@ -21,7 +21,7 @@ enum {
   SFT_LCK
 };
 
-#define KC_SftLck TD(SFT_LCK) /* alias for tapdance */
+#define SftLck TD(SFT_LCK) /* alias for tapdance */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -38,10 +38,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 
 [_COLEMAK] = LAYOUT_planck_grid(
-  KC_GESC   , KC_Q   , KC_W   , KC_F   , KC_P   , KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
-  KC_NAV    , KC_A   , KC_R   , KC_S   , KC_T   , KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
-  KC_SftLck , KC_Z   , KC_X   , KC_C   , KC_V   , KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_SftEnt ,
-  RKC_ECT   , KC_LGUI, KC_LCTL, KC_LALT, KC_LGUI, KC_SPC,  KC_SPC,  MO(1),   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+  KC_GESC, KC_Q   , KC_W   , KC_F   , KC_P   , KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
+  NAV    , KC_A   , KC_R   , KC_S   , KC_T   , KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
+  SftLck , KC_Z   , KC_X   , KC_C   , KC_V   , KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SftEnt ,
+  RECT   , KC_LGUI, KC_LCTL, KC_LALT, KC_LGUI, KC_SPC,  KC_SPC,  MO(1),   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
   ),
 
 /* Symbol

@@ -8,24 +8,24 @@ extern uint8_t is_master;
 #define _FKEYS 3
 
 //keycode shorthands
-#define KC_SYM  MO(1)
-#define KC_NAV  LT(2, KC_ESC)
-#define KC_FKEY MO(3)
+#define SYM  MO(1)
+#define NAV  LT(2, KC_ESC)
+#define FKEY MO(3)
 
 //aliases for clarity in layering
-#define KC_SftEnt SFT_T(KC_ENT)
-#define KC_BSCTL  LCTL_T(KC_BSPC)
-#define KC_CTAB   LCTL(KC_TAB)
-#define KC_ATAB   LALT(KC_TAB)
+#define SftEnt SFT_T(KC_ENT)   // Shift when held, Enter when tapped
+#define BSCTL  LCTL_T(KC_BSPC) // Ctrl when held, Backspace when tapped
+#define CTAB   LCTL(KC_TAB)
+#define ATAB   LALT(KC_TAB)
 
 //aliases for Navigation layer
-#define KC_CBSPC LCTL(KC_BSPC) // delete whole word in PC
-#define KC_CL   LCTL(KC_LEFT)
-#define KC_CR   LCTL(KC_RGHT)
+#define CBSPC LCTL(KC_BSPC)  // delete whole word
+#define C_CL   LCTL(KC_LEFT) // move cursor one word back
+#define C_CR   LCTL(KC_RGHT) // move cursor one word forward
 
-//internet browser tab shortcuts and window swapping for Mac and Windows
-#define KC_CPGD LCTL(KC_PGDN)
-#define KC_CPGU LCTL(KC_PGUP)
+//internet browser tab shortcuts and window swapping
+#define CTLPGDN LCTL(KC_PGDN)
+#define CTLPGUP LCTL(KC_PGUP)
 
 #define G_GRV   LGUI(KC_GRV)
 #define SftEnt  SFT_T(KC_ENT)
@@ -33,13 +33,13 @@ extern uint8_t is_master;
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      KC_TAB,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,                         KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN, KC_BSPC,\
+      KC_TAB,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,                        KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN, KC_BSPC,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     KC_NAV  ,    KC_A,    KC_R,    KC_S,    KC_T,    KC_D,                        KC_H,    KC_N,    KC_E,    KC_I, KC_O   , KC_QUOT,\
+      NAV   ,    KC_A,    KC_R,    KC_S,    KC_T,    KC_D,                        KC_H,    KC_N,    KC_E,    KC_I, KC_O   , KC_QUOT,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                        KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_SftEnt,\
+      KC_LSFT,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                        KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  SftEnt,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LALT, KC_LGUI, KC_BSCTL,   KC_SPC,   KC_SYM, KC_FKEY \
+                                          KC_LALT, KC_LGUI,   BSCTL,   KC_SPC,   SYM ,   FKEY \
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -58,11 +58,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_NAVIGATION] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, _______, _______, _______, _______, _______,                      KC_CTAB,   KC_CL,   KC_UP,   KC_CR,  KC_DEL, _______,\
+      _______, _______, _______, _______, _______, _______,                      CTAB ,   C_CL  ,   KC_UP,   C_CR  ,  KC_DEL, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, _______, _______, _______, _______, _______,                      KC_CPGU, KC_LEFT, KC_DOWN, KC_RGHT, KC_CPGD, _______,\
+      _______, _______, _______, _______, _______, _______,                     CTLPGUP, KC_LEFT , KC_DOWN, KC_RGHT, CTLPGDN, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, _______, _______, _______, _______, _______,                      KC_ATAB, KC_CBSPC, KC_HOME, KC_END, _______, _______,\
+      _______, _______, _______, _______, _______, _______,                      ATAB   , CBSPC , KC_HOME, KC_END, _______, _______,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, _______, _______,    _______, _______, KC_RALT \
                                       //`--------------------------'  `--------------------------'

@@ -5,8 +5,8 @@
 #define _FL 1
 #define _NAV 2
 
-#define KC_ALEFT  LALT(KC_LEFT)
-#define KC_ARGHT  LALT(KC_RGHT)
+#define ALEFT  LALT(KC_LEFT)
+#define ARGHT  LALT(KC_RGHT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Keymap _BL: (Base Layer) Default Layer
@@ -59,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     
 [_NAV] = LAYOUT_60_ansi(
     _______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______, \
-    _______,_______,_______,_______,_______,_______,_______,KC_ALEFT, KC_UP ,KC_ARGHT,_______,_______,_______,_______, \
+    _______,_______,_______,_______,_______,_______,_______,ALEFT  , KC_UP ,ARGHT  ,_______,_______,_______,_______, \
     _______,_______,_______,_______,_______,_______,_______,KC_LEFT,KC_DOWN,KC_RGHT,_______,_______,        _______, \
     _______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______, \
     _______,_______,_______,              _______,                        _______,_______,_______,_______),
