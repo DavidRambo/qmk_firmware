@@ -32,8 +32,8 @@
 #define GSR     LGUI(S(KC_RGHT)) // forward one tab in Safari
 #define CTLPGDN LCTL(KC_PGDN)   // back one tab on PC
 #define CTLPGUP LCTL(KC_PGUP)   // forward one tab on PC
-#define GTAB    LGUI(KC_TAB)    // Mac: switch applications
-#define GGRV    LGUI(KC_GRV)    // Mac: switch between windows within an application
+#define GTAB    LGUI(KC_TAB)    // Mac/Linux: switch applications
+#define GGRV    LGUI(KC_GRV)    // Mac/Linux: switch between windows within an application
 #define ATAB    LALT(KC_TAB)
 #define CTAB    LCTL(KC_TAB)
 
@@ -46,12 +46,12 @@ enum custom_layer {
     _COLEMAK,
     _PC,
     _GAME,     // Gaming layer
-    _QUD,3     // Roguelike layer
+    _QUD,      // Roguelike layer
     _SYMBOL,   // Function keys, numbers, symbols, Backlighting
     _NAV,      // Navigation Layer on Mac
     _NAVPC,    // Navigation Layer on Win
     _NAVQUD,   // Numpad for Roguelike 8-directional movement
-}
+};
 
 // tapdance declarations
 enum {
@@ -146,7 +146,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
    _______, _______, _______, _______, _______, _______, _______, _______, _______, CTAB   , CLEFT  , KC_UP  , CRGHT  , KC_DEL , _______,
    _______, _______, _______, _______, _______, _______, _______, _______, _______, CTLPGUP, KC_LEFT, KC_DOWN, KC_RGHT, CTLPGDN, _______,
-   _______, _______, _______, _______, _______, _______, _______, _______, _______, ATAB   , CBSPC  , KC_HOME, KC_END , _______, _______,
+   _______, _______, _______, _______, _______, _______, _______, _______, _______, ATAB   , CBSPC  , KC_HOME, KC_END , GGRV   , _______,
    RESET  , _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
  ),
     
