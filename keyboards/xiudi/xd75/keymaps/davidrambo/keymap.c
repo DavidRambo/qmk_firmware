@@ -55,11 +55,13 @@ enum custom_layer {
 
 // tapdance declarations
 enum {
-  SFT_LCK
+  SFT_LCK,
+  SFT_CAPS
 };
 
-// alias for tapdance
+// aliases for tapdance
 #define SftLck TD(SFT_LCK)
+#define SftCap TD(SFT_CAPS)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -81,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    KC_GRV , KC_1,    KC_2,    KC_3,    KC_4,    KC_5,   KC_MINS, TO(1)  , KC_EQL,  KC_6,   KC_7,   KC_8,    KC_9,    KC_0,    KC_BSPC,
    KC_TAB , KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,   KC_LBRC, KC_BSLS, KC_RBRC, KC_J,   KC_L,   KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
    NAV    , KC_A,    KC_R,    KC_S,    KC_T,    KC_D,   KC_PGUP, KC_MPLY, GGRV   , KC_H,   KC_N,   KC_E,    KC_I,    KC_O,    KC_QUOT,
-   SftLck , KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_PGDN, KC_UP  , GTAB   , KC_K,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, SftEnt,
+   SftCap , KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_PGDN, KC_UP  , GTAB   , KC_K,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, SftEnt,
    KC_DEL , KC_LGUI, KC_LCTL, KC_LALT, KC_LCTL, BSGUI,  KC_LEFT, KC_DOWN, KC_RGHT, KC_SPC, MO(4) , KC_RGUI, KC_RALT, KC_RCTL, BL_STEP
  ),
     
@@ -107,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    _______, _______, _______, _______, _______, _______, _______,KC_PSLS, KC_PAST, _______, _______, _______, _______, _______, TO(0),
    KC_GESC, KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,   KC_LBRC, KC_BSLS, KC_RBRC, KC_J,   KC_L,   KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
    NAV    , KC_A,    KC_R,    KC_S,    KC_T,    KC_D,   KC_PGUP, KC_MPLY, GGRV   , KC_H,   KC_N,   KC_E,    KC_I,    KC_O,    KC_QUOT,
-   SftLck , KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_PGDN, KC_UP  , ATAB   , KC_K,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, SftEnt ,
+   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_PGDN, KC_UP  , ATAB   , KC_K,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, SftEnt ,
    KC_DEL , KC_LGUI, KC_LGUI, KC_LALT, KC_LCTL, TO(7),  KC_LEFT, KC_DOWN, KC_RGHT, KC_SPC, MO(4) , KC_RGUI, KC_RALT, KC_RCTL, _______
  ),
     
@@ -159,7 +161,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  )
 };
 
-// Shift vs capslock function. From bbaserdem's Planck keymap.
+// Shift vs capslock functions. From bbaserdem's Planck keymap.
 void caps_tap (qk_tap_dance_state_t *state, void *user_data) {
     if (state->count == 1) {
         register_code (KC_LSFT);
@@ -176,11 +178,28 @@ void caps_tap_end (qk_tap_dance_state_t *state, void *user_data) {
     }
 }
 
+// Shift vs Caps_Word functions.
+void tap_caps_word(qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count ==1) {
+        register_code(KC_LSFT);
+    } else if (state->count == 2) {
+        unregister_code(KC_LSFT);
+        caps_word_on();
+    }
+}
+
+void tap_caps_reset(qk_tap_dance_state_t *state, void *user_data) {
+    unregister_code(KC_LSFT);
+}
+
 //Tap Dance Definitions
 qk_tap_dance_action_t tap_dance_actions[] = {
   //Tap once for Shift, twice for Caps Lock
-  [SFT_LCK] = ACTION_TAP_DANCE_FN_ADVANCED( caps_tap, NULL, caps_tap_end )
+  [SFT_LCK] = ACTION_TAP_DANCE_FN_ADVANCED(caps_tap, NULL, caps_tap_end),
+  //Tap once for Shift, twice for Caps Word
+  [SFT_CAPS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, tap_caps_word, tap_caps_reset)
 };
+
 
 /* Template for future layers
  [_LAYER_NAME] = { 
