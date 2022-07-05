@@ -34,6 +34,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define TAPPING_TERM 200
 #define PERMISSIVE_HOLD
+//#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD  // would not work, perhaps due to SFT_T(KC_ENT)
 
 #ifdef RGB_MATRIX_ENABLE
     #define RGB_MATRIX_STARTUP_HUE 231
