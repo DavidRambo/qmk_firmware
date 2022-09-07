@@ -46,7 +46,7 @@ enum custom_layer {
     _COLEMAK,
     _PC,
     _GAME,     // Gaming layer
-    _QUD,3     // Roguelike layer
+    _QUD,      // Roguelike layer
     _SYMBOL,   // Function keys, numbers, symbols, Backlighting
     _NAV,      // Navigation Layer on Mac
     _NAVPC,    // Navigation Layer on Win
@@ -129,7 +129,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    KC_F12 , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , _______, _______, _______, KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 ,
    KC_LBRC, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , _______, _______, _______, KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_RBRC,
    _______, KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC, _______, _______, _______, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_EQL ,
-   _______, KC_HOME, KC_END , BL_OFF , BL_ON  , KC_VOLD, _______, _______, _______, KC_VOLU, KC_MINS, _______, _______, _______, _______,
+   _______, KC_HOME, KC_END , KC_VOLD, KCVOLU , KC_MPLY, _______, _______, _______, KC_GRV , KC_MINS, _______, _______, _______, _______,
    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
  ),
 
