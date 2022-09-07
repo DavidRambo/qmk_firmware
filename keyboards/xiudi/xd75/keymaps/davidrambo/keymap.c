@@ -55,7 +55,7 @@ enum custom_layer {
 
 // tapdance declarations
 enum {
-  SFT_LCK,
+//  SFT_LCK,
   SFT_CAPS
 };
 
@@ -162,21 +162,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 // Shift vs capslock functions. From bbaserdem's Planck keymap.
-void caps_tap (qk_tap_dance_state_t *state, void *user_data) {
-    if (state->count == 1) {
-        register_code (KC_LSFT);
-    } else if (state->count == 2) {
-        unregister_code (KC_LSFT);
-        register_code (KC_CAPS);
-    }
-}
-void caps_tap_end (qk_tap_dance_state_t *state, void *user_data) {
-    if (state->count == 1) {
-        unregister_code (KC_LSFT);
-    } else {
-        unregister_code (KC_CAPS);
-    }
-}
+//void caps_tap (qk_tap_dance_state_t *state, void *user_data) {
+//    if (state->count == 1) {
+//        register_code (KC_LSFT);
+//    } else if (state->count == 2) {
+//        unregister_code (KC_LSFT);
+//        register_code (KC_CAPS);
+//    }
+//}
+//void caps_tap_end (qk_tap_dance_state_t *state, void *user_data) {
+//    if (state->count == 1) {
+//        unregister_code (KC_LSFT);
+//    } else {
+//        unregister_code (KC_CAPS);
+//    }
+//}
 
 // Shift vs Caps_Word functions.
 void tap_caps_word(qk_tap_dance_state_t *state, void *user_data) {
@@ -195,7 +195,7 @@ void tap_caps_reset(qk_tap_dance_state_t *state, void *user_data) {
 //Tap Dance Definitions
 qk_tap_dance_action_t tap_dance_actions[] = {
   //Tap once for Shift, twice for Caps Lock
-  [SFT_LCK] = ACTION_TAP_DANCE_FN_ADVANCED(caps_tap, NULL, caps_tap_end),
+//  [SFT_LCK] = ACTION_TAP_DANCE_FN_ADVANCED(caps_tap, NULL, caps_tap_end),
   //Tap once for Shift, twice for Caps Word
   [SFT_CAPS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, tap_caps_word, tap_caps_reset)
 };

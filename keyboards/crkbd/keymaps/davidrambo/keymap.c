@@ -54,6 +54,13 @@ enum custom_keycodes {
   SET_RGB,
 };
 
+enum td_codes {
+  SFT_CAPS,
+};
+
+// Tapdance aliases
+#define SftCap TD(SFT_CAPS)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK] = LAYOUT(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
@@ -61,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       NAV   ,    KC_A,    KC_R,    KC_S,    KC_T,    KC_D,                        KC_H,    KC_N,    KC_E,    KC_I, KC_O   , KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                        KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  SftEnt,
+      SftCap,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                        KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  SftEnt,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LALT, KC_LGUI,   BSCTL,   KC_SPC,   SYM ,   FKEY
                                       //`--------------------------'  `--------------------------'
@@ -124,3 +131,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 }
+
+// Tapdance functions: 1 for Shift, 2 for Caps_Word.
+void tap_caps_word(qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count ==1) {
+        register_code(KC_LSFT);
+    } else if (state->count == 2) {
+        unregister_code(KC_LSFT);
+        caps_word_on();
+    }
+}
+
+void tap_caps_reset(qk_tap_dance_state_t *state, void *user_data) {
+    unregister_code(KC_LSFT);
+}
+
+//Tap Dance Definitions
+qk_tap_dance_action_t tap_dance_actions[] = {
+  //Tap once for Shift, twice for Caps Word
+  [SFT_CAPS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, tap_caps_word, tap_caps_reset)
+};
