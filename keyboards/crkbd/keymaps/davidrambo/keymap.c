@@ -51,6 +51,13 @@ enum custom_keycodes {
   SET_RGB,
 };
 
+enum td_codes {
+  SFT_CAPS,
+};
+
+// Tapdance aliases
+#define SftCap TD(SFT_CAPS)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK] = LAYOUT(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
@@ -58,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       NAV   ,    KC_A,    KC_R,    KC_S,    KC_T,    KC_D,                        KC_H,    KC_N,    KC_E,    KC_I, KC_O   , KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                        KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  SftEnt,
+      SftCap,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                        KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  SftEnt,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LALT, KC_LGUI,   BSCTL,   KC_SPC,   SYM ,   FKEY
                                       //`--------------------------'  `--------------------------'
@@ -71,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_BSLS, KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_EQL ,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, KC_HOME, KC_END,  KC_LBRC, KC_RBRC, _______,                       KC_GRV, KC_MINS, KC_PGUP, _______, _______, _______,
+      _______, KC_HOME, KC_END,  KC_WH_U, KC_WH_D, _______,                       KC_GRV, KC_MINS, KC_PGUP, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, _______, _______,    _______, _______, KC_PGDN
                                       //`--------------------------'  `--------------------------'
@@ -79,9 +86,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_NAVIGATION] = LAYOUT(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, _______, _______, KC_MS_U, _______, _______,                       CTAB  ,   C_CL ,   KC_UP,   C_CR ,  KC_DEL, _______,
+      _______, _______, _______, KC_MS_U, _______, _______,                      CTAB ,   C_CL  ,   KC_UP,   C_CR  ,  KC_DEL, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______,                      CTLPGUP, KC_LEFT, KC_DOWN, KC_RGHT, CTLPGDN, _______,
+      _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______,                     CTLPGUP, KC_LEFT , KC_DOWN, KC_RGHT, CTLPGDN, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       QK_BOOT, _______, _______, KC_MW_U, KC_WH_D, _______,                       ATAB  ,  CBSPC , KC_HOME, KC_END ,  G_GRV , _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -95,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, RGB_SAI, RGB_HUI, RGB_VAI, RGB_TOG, SET_RGB,                     _______, _______, _______, _______, _______,  _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, RGB_MOD, RGB_M_P, KC_VOLD, KC_VOLU, KC_MPLY,                     _______, _______, _______, _______, _______, _______,
+      _______, RGB_MOD, RGB_M_P, KC_VOLD, KC_VOLU, KC_MPLY,                     _______, _______, _______, _______, _______, CAPSWRD,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, _______, _______,     _______, _______, _______
                                       //`--------------------------'  `--------------------------'
@@ -121,3 +128,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 }
+
+// Tapdance functions: 1 for Shift, 2 for Caps_Word.
+void tap_caps_word(qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count ==1) {
+        register_code(KC_LSFT);
+    } else if (state->count == 2) {
+        unregister_code(KC_LSFT);
+        caps_word_on();
+    }
+}
+
+void tap_caps_reset(qk_tap_dance_state_t *state, void *user_data) {
+    unregister_code(KC_LSFT);
+}
+
+//Tap Dance Definitions
+qk_tap_dance_action_t tap_dance_actions[] = {
+  //Tap once for Shift, twice for Caps Word
+  [SFT_CAPS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, tap_caps_word, tap_caps_reset)
+};
