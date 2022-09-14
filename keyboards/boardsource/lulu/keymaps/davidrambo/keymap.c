@@ -32,7 +32,6 @@ enum custom_layers {
 //aliases for clarity in layering
 #define SftEnt  SFT_T(KC_ENT)   // Shift when held, Enter when tapped
 #define BSCTL   LCTL_T(KC_BSPC) // Ctrl when held, Backspace when tapped
-#define QTGUI   LGUI_T(KC_QUOT) // GUI when held, Quote when tapped
 
 //aliases for clarity in layering
 #define C_TAB   LCTL(KC_TAB)
@@ -54,7 +53,6 @@ enum custom_layers {
 
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE,
-  SET_RGB,
 };
 
 
@@ -78,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [_COLEMAK] = LAYOUT(
   KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
   KC_TAB,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_G,                     KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
-  NAV,      KC_A,   KC_R,    KC_S,    KC_T,    KC_D,                     KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    QTGUI,
+  NAV,      KC_A,   KC_R,    KC_S,    KC_T,    KC_D,                     KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
   KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,   KC_MUTE,  KC_NO,  KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SftEnt,
                      MEH_T(KC_DEL), KC_LGUI, KC_LALT, BSCTL,      KC_SPC,   SYM,   FKEY, KC_RALT
 ),
@@ -124,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_F12 , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  ,                    KC_F6  , KC_F7  , KC_F8  , KC_F9 ,  KC_F10 , KC_F11 ,
   KC_LBRC, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                    KC_6   , KC_7   , KC_8   , KC_9  ,  KC_0   , KC_RBRC,
   KC_BSLS, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_EQL ,
-  _______, G_LEFT , G_RGHT , KC_LBRC, KC_RBRC, _______, _______,  _______, KC_GRV , KC_MINS, KC_PGUP, _______, _______, _______,
+  _______, KC_HOME, KC_END , KC_LBRC, KC_RBRC, _______, _______,  _______, KC_GRV , KC_MINS, KC_PGUP, _______, _______, _______,
                             _______, _______, _______, _______,    _______, _______, KC_PGDN, _______
 ),
 /* Navigation
@@ -146,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
   _______, _______, _______, KC_MS_U, _______, _______,                      C_TAB  , CLEFT  ,  KC_UP , CRGHT  , KC_DEL , _______,
   _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______,                      CTLPGUP, KC_LEFT, KC_DOWN, KC_RGHT, CTLPGDN, _______,
-  _______, _______, _______, KC_WH_U, KC_WH_D, _______,  _______,  _______,  G_TAB  , CBSPC  , _______, _______, G_GRV  , _______,
+  _______, _______, _______, KC_WH_U, KC_WH_D, _______,  _______,  _______,  A_TAB  , CBSPC  , _______, _______, G_GRV  , _______,
                             _______, _______, _______,  _______,    _______,  _______, _______, _______
 ),
 /* Function Keys
@@ -167,7 +165,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_FKEYS] = LAYOUT(
   QK_BOOT, _______, _______, _______, _______, _______,                      LAG_SWP, LAG_NRM, _______, _______, _______, QK_BOOT,
   _______, _______, RGB_VAD, RGB_SAD, RGB_HUD, RGB_VAI,                      _______, _______, _______, _______, _______, TO(1)  ,
-  _______, _______, RGB_MOD, RGB_SAI, RGB_HUI, RGB_TOG,                      _______, _______, _______, _______, _______, _______,
+  _______, _______, RGB_MOD, RGB_SAI, RGB_HUI, RGB_TOG,                      _______, _______, _______, _______, _______, TO(0)  ,
   _______, _______, _______, KC_VOLD, KC_VOLU, KC_MPLY,  _______,  _______,  _______, _______, _______, _______, _______, _______,
                             _______, _______, _______,  _______,    _______,  _______, _______, _______
 )
