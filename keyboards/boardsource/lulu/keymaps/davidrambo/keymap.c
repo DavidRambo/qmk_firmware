@@ -44,6 +44,18 @@ enum custom_layers {
 #define CRGHT   LCTL(KC_RGHT)
 #define CLEFT   LCTL(KC_LEFT)
 
+// Left-hand home row mods
+#define HOME_A LALT_T(KC_A)
+#define HOME_R LGUI_T(KC_R)
+#define HOME_S LSFT_T(KC_S)
+#define HOME_T LCTL_T(KC_T)
+
+// Right-hand home row mods
+#define HOME_N RCTL_T(KC_N)
+#define HOME_E RSFT_T(KC_E)
+#define HOME_I LGUI_T(KC_I)
+#define HOME_O LALT_T(KC_O)
+
 //internet browser tab shortcuts and window swapping
 #define CTLPGDN LCTL(KC_PGDN)
 #define CTLPGUP LCTL(KC_PGUP)
@@ -76,9 +88,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [_COLEMAK] = LAYOUT(
   KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
   KC_TAB,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_G,                     KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
-  NAV,      KC_A,   KC_R,    KC_S,    KC_T,    KC_D,                     KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
-  KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,   KC_MUTE,  KC_NO,  KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SftEnt,
-                     MEH_T(KC_DEL), KC_LGUI, KC_LALT, BSCTL,      KC_SPC,   SYM,   FKEY, KC_RALT
+  NAV,      HOME_A, HOME_R,  HOME_S,  HOME_T,  KC_D,                     KC_H,    HOME_N,  HOME_E,  HOME_I,  HOME_O,  KC_QUOT,
+  KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,   KC_MUTE,   KC_NO, KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SftEnt,
+                     MEH_T(KC_DEL), KC_LALT, KC_LGUI, BSCTL,          KC_SPC,   SYM,   FKEY, KC_RALT
 ),
 
 /* Gaming Layer
@@ -127,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 /* Navigation
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * | RESET|      |      |      |      |      |                    |      |      |      |      |      |      |
+ * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |      |      |      |      |      |                    |      |      |  UP  |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -142,14 +154,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_NAVIGATION] = LAYOUT(
   _______, _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, KC_MS_U, _______, _______,                      C_TAB  , CLEFT  ,  KC_UP , CRGHT  , KC_DEL , _______,
+  _______, _______, KC_BTN2, KC_MS_U, KC_BTN1, _______,                      C_TAB  , CLEFT  ,  KC_UP , CRGHT  , KC_DEL , _______,
   _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______,                      CTLPGUP, KC_LEFT, KC_DOWN, KC_RGHT, CTLPGDN, _______,
   _______, _______, _______, KC_WH_U, KC_WH_D, _______,  _______,  _______,  A_TAB  , CBSPC  , _______, _______, G_GRV  , _______,
                             _______, _______, _______,  _______,    _______,  _______, _______, _______
 ),
 /* Function Keys
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * | BOOT |      |      |      |      |      |                    |      |      |      |      |      |      |
+ * | BOOT |      |      |      |      |      |                    | LALT<-->LGUI|      |      |      | BOOT |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |      |BRGHT-| SAT- | HUE- |BRGHT+|                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
