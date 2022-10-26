@@ -26,7 +26,7 @@
 #define SftEnt  SFT_T(KC_ENT)
 #define BS_GUI  LGUI_T(KC_BSPC)
 #define BS_CTL  LCTL_T(KC_BSPC)
-#define RECT    LCA_T(KC_DEL) // Ctrl+Alt is the basis for Rectangle WM
+#define MEHDEL  MEH_T(KC_DEL)
 
 // internet browser tab shortcuts and window/application swapping for Mac and Win
 #define GSL     LGUI(S(KC_LEFT)) // back one tab in Safari
@@ -37,6 +37,18 @@
 #define G_GRV   LGUI(KC_GRV)    // Mac: switch between windows within an application
 #define A_TAB   LALT(KC_TAB)
 #define C_TAB   LCTL(KC_TAB)
+
+// Left-hand home row mods
+#define HOME_A LALT_T(KC_A)
+#define HOME_R LGUI_T(KC_R)
+#define HOME_S LSFT_T(KC_S)
+#define HOME_T LCTL_T(KC_T)
+
+// Right-hand home row mods
+#define HOME_N RCTL_T(KC_N)
+#define HOME_E RSFT_T(KC_E)
+#define HOME_I LGUI_T(KC_I)
+#define HOME_O LALT_T(KC_O)
 
 // navigKC_ation layers for both Mac OS X and Windows
 #define NAVMAC  LT(5, KC_ESC)
@@ -52,14 +64,7 @@ enum custom_layers {
     _NAVMAC,
     _NAVPC,
     _NAVQUD,
-}
-
-//tapdance declarations
-enum {
-  SFT_LCK
 };
-
-#define SftLck TD(SFT_LCK) /* alias for tapdance */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -80,9 +85,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_COLEMAK] = LAYOUT_preonic_grid(
   KC_GRV , KC_1,    KC_2,    KC_3,    KC_4,    KC_5  , KC_6,   KC_7,   KC_8,    KC_9,    KC_0,    TG(1)  ,
   KC_TAB , KC_Q,    KC_W,    KC_F,    KC_P,    KC_G  , KC_J,   KC_L,   KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
-  NAVMAC , KC_A,    KC_R,    KC_S,    KC_T,    KC_D  , KC_H,   KC_N,   KC_E,    KC_I,    KC_O,    KC_QUOT,
-  SftLck , KC_Z,    KC_X,    KC_C,    KC_V,    KC_B  , KC_K,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, SftEnt ,
-  RECT   , KC_RCTL, KC_LGUI, KC_LCTL, KC_LALT, BS_GUI, KC_SPC, MO(4),  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+  NAVMAC , HOME_A,  HOME_R,  HOME_S,  HOME_T,  KC_D  , KC_H,   HOME_N, HOME_E,  HOME_I,  HOME_O,  KC_QUOT,
+  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B  , KC_K,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, SftEnt ,
+  MEHDEL , KC_RCTL, KC_LGUI, KC_LCTL, KC_LALT, BS_GUI, KC_SPC, MO(4),  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
   ),
   
 [_PC] = LAYOUT_preonic_grid(
@@ -124,7 +129,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_F12 , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 ,
   KC_LBRC, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_RBRC,
   KC_BSLS, KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_EQL ,
-  _______, KC_HOME, KC_END , KC_MNXT, KC_MPLY, KC_WH_L, KC_WH_R, KC_MINS, KC_PGUP, KC_WH_D, KC_WH_U, _______,
+  _______, KC_HOME, KC_END , KC_LBRC, KC_RBRC, KC_MPLY, _______, KC_MINS, KC_PGUP, _______, _______, _______,
   _______, _______, _______, _______, _______, _______, _______, _______, KC_PGDN, KC_VOLD, KC_VOLU, KC_MUTE 
   ),
 
@@ -132,17 +137,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_NAVMAC] = LAYOUT_preonic_grid(
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______, C_TAB  , A_LEFT , KC_UP  , A_RGHT , KC_DEL , _______,
-  _______, _______, _______, _______, _______, _______,S(C_TAB), KC_LEFT, KC_DOWN, KC_RGHT, C_TAB  , _______,
-  _______, _______, _______, _______, _______, _______, G_TAB  , A_BSPC , KC_HOME, KC_END , G_GRV  , _______,
+  _______, _______, KC_BTN2, KC_MS_U, KC_BTN1, _______, C_TAB  , A_LEFT , KC_UP  , A_RGHT , KC_DEL , _______,
+  _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______,S(C_TAB), KC_LEFT, KC_DOWN, KC_RGHT, C_TAB  , _______,
+  _______, _______, _______, KC_WH_U, KC_WH_D, _______, G_TAB  , A_BSPC , KC_HOME, KC_END , G_GRV  , _______,
   QK_BOOT, _______, _______, _______, KC_RALT, _______, _______, _______, _______, _______, _______, _______
 ),
 
 [_NAVPC] = LAYOUT_preonic_grid(
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, C_TAB  , C_LEFT , KC_UP  , C_RGHT , KC_DEL , _______,
-    _______, _______, _______, _______, _______, _______, CTLPGUP, KC_LEFT, KC_DOWN, KC_RGHT, CTLPGDN, _______,
-    _______, _______, _______, _______, _______, _______, A_TAB  , C_BSPC , KC_HOME, KC_END , G_GRV  , _______,
+    _______, _______, KC_BTN2, KC_MS_U, KC_BTN1, _______, C_TAB  , C_LEFT , KC_UP  , C_RGHT , KC_DEL , _______,
+    _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______, CTLPGUP, KC_LEFT, KC_DOWN, KC_RGHT, CTLPGDN, _______,
+    _______, _______, _______, KC_WH_U, KC_WH_D, _______, A_TAB  , C_BSPC , KC_HOME, KC_END , G_GRV  , _______,
     QK_BOOT, _______, _______, KC_RALT, _______, _______, _______, _______, _______, _______, _______, _______
 ),
   
@@ -153,27 +158,4 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______, KC_P1  , KC_P5  , KC_P3  , _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, KC_PMNS, KC_PPLS, _______, _______
 )
-};
-
-// Shift vs capslock function. From bbaserdem's Planck keymap.
-void caps_tap (qk_tap_dance_state_t *state, void *user_data) {
-    if (state->count == 1) {
-        register_code (KC_LSFT);
-    } else if (state->count == 2) {
-        unregister_code (KC_LSFT);
-        register_code (KC_CAPS);
-    }
-}
-void caps_tap_end (qk_tap_dance_state_t *state, void *user_data) {
-    if (state->count == 1) {
-        unregister_code (KC_LSFT);
-    } else {
-        unregister_code (KC_CAPS);
-    }
-}
-
-//Tap Dance Definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
-  //Tap once for Shift, twice for Caps Lock
-  [SFT_LCK] = ACTION_TAP_DANCE_FN_ADVANCED( caps_tap, NULL, caps_tap_end )
 };
