@@ -44,11 +44,19 @@
 #define HOME_S LSFT_T(KC_S)
 #define HOME_T LCTL_T(KC_T)
 
+// Swap for macos
+#define MHOME_A LGUI_T(KC_A)
+#define MHOME_R LALT_T(KC_R)
+
 // Right-hand home row mods
 #define HOME_N RCTL_T(KC_N)
 #define HOME_E RSFT_T(KC_E)
 #define HOME_I LGUI_T(KC_I)
 #define HOME_O LALT_T(KC_O)
+
+// Swap for macos
+#define MHOME_I LALT_T(KC_I)
+#define MHOME_O LGUI_T(KC_O)
 
 // navigKC_ation layers for both Mac OS X and Windows
 #define NAVMAC  LT(5, KC_ESC)
