@@ -1,4 +1,5 @@
-/* Copyright 2022 David Rambo
+/* Copyright 2022 Cole Smith <cole@boardsource.xyz>
+ * Copyright 2022 David Rambo <davidrambo@mailfence.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
