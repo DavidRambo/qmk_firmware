@@ -29,7 +29,10 @@ enum custom_layers {
 
 //keycode shorthands
 #define SYM  MO(3)
+#define SPCSYM LT(3, KC_SPC)
+#define ESCSYM LT(3, KC_ESC)
 #define NAV  LT(4, KC_ESC)
+#define ENTNAV  LT(4, KC_ENT)
 #define FKEY MO(6)
 
 //aliases for clarity in layering
@@ -84,11 +87,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
  [_COLEMAK] = LAYOUT(
-  KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
-  KC_TAB,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_G,                     KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
-  NAV,      HOME_A, HOME_R,  HOME_S,  HOME_T,  KC_D,                     KC_H,    HOME_N,  HOME_E,  HOME_I,  HOME_O,  KC_QUOT,
-  KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,   KC_MUTE,   KC_NO, KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SftEnt,
-                     MEH_T(KC_DEL), KC_LALT, KC_LGUI, BSCTL,          KC_SPC,   SYM,   FKEY, KC_RALT
+  KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,  KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
+  KC_TAB,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_G,                     KC_J,  KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
+  NAV,      HOME_A, HOME_R,  HOME_S,  HOME_T,  KC_D,                     KC_H,  HOME_N,  HOME_E,  HOME_I,  HOME_O,  KC_QUOT,
+  KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,   KC_MUTE,   KC_NO, KC_K,  KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SftEnt,
+                     MEH_T(KC_DEL), KC_LALT, ENTNAV, ESCSYM,          SPCSYM,  SYM,  FKEY, KC_RALT
 ),
 
  [_RL] = LAYOUT(
@@ -141,8 +144,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_F12 , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  ,                    KC_F6  , KC_F7  , KC_F8  , KC_F9 ,  KC_F10 , KC_F11 ,
   KC_LBRC, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                    KC_6   , KC_7   , KC_8   , KC_9  ,  KC_0   , KC_RBRC,
   KC_BSLS, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_EQL ,
-  _______, KC_HOME, KC_END , KC_LBRC, KC_RBRC, KC_EQL , _______,  _______, KC_GRV , KC_MINS, KC_PGUP, _______, _______, _______,
-                            _______, _______, _______, _______,    _______, _______, KC_PGDN, _______
+  _______, KC_HOME, KC_END , KC_LBRC, KC_RBRC, KC_EQL , _______,  _______, KC_GRV , KC_MINS, _______, _______, _______, _______,
+                            _______, _______, _______, _______,    _______, _______, _______, _______
 ),
 /* Navigation
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -163,7 +166,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
   _______, _______, KC_BTN2, KC_MS_U, KC_BTN1, _______,                      C_TAB  , CLEFT  ,  KC_UP , CRGHT  , KC_DEL , _______,
   _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______,                      CTLPGUP, KC_LEFT, KC_DOWN, KC_RGHT, CTLPGDN, _______,
-  _______, _______, _______, KC_WH_U, KC_WH_D, KC_MPLY,  _______,  _______,  A_TAB  , CBSPC  , _______, _______, G_GRV  , _______,
+  _______, _______, _______, KC_WH_U, KC_WH_D, KC_MPLY,  _______,  _______,  A_TAB  , KC_PGDN, KC_PGUP, _______, G_GRV  , _______,
                             _______, _______, _______,  _______,    _______,  _______, _______, _______
 ),
 
