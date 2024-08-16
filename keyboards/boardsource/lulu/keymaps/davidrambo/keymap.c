@@ -198,7 +198,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                             _______, _______, _______,  _______,    _______,  _______, _______, _______
 )
 };
->>>>>>> d982067abb (Add personal Lulu keymap)
 
 #ifdef ENCODER_ENABLE
 bool encoder_update_user(uint8_t index, bool clockwise) {
