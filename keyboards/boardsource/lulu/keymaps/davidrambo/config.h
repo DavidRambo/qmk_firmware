@@ -22,6 +22,7 @@
 #define CAPS_WORD_IDLE_TIMEOUT 3000  // 3 seconds.
 
 #define TAPPING_TERM 190
+#define QUICK_TAP_TERM 50
 /*#define PERMISSIVE_HOLD*/
 #define TAPPING_FORCE_HOLD
 
