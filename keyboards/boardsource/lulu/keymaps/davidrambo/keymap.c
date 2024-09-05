@@ -28,6 +28,10 @@ enum custom_layers {
     _FKEYS,
 };
 
+enum custom_keycodes {
+    UPDIR = SAFE_RANGE,
+};
+
 // keycode shorthands
 #define SYM MO(_NUMROW)
 #define SPCNUM LT(_NUMROW, KC_SPC)
@@ -91,7 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_G,                     KC_J,  KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
   ESCNAV,   HOME_A, HOME_R,  HOME_S,  HOME_T,  KC_D,                     KC_H,  HOME_N,  HOME_E,  HOME_I,  HOME_O,  KC_QUOT,
   KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,   KC_MUTE,   KC_NO, KC_K,  KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SftEnt,
-                     MEH_T(KC_DEL), KC_LALT, ESCNAV, BSPCSYM,       SPCNUM, TABSYM, FKEY, KC_RALT
+                     MEH_T(KC_DEL), KC_LALT, ESCNAV, BSPCSYM,       SPCNUM, KC_UNDS, FKEY, KC_RALT
 ),
 
  [_RL] = LAYOUT(
@@ -131,11 +135,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |   `  |   <  |   >  |   $  |   .  |                    |   @  |   &  |   {  |   }  |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |   !  |   -  |   +  |   =  |   \  |-------.    ,-------|   |  |   _  |   (  |   )  |   %  |      |
- * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |      |   ^  |   $  |   [  |   ]  |      |-------|    |-------|   `  |   :  |   ~  |   *  |      |      |
+ * |      |      |   /  |  {  |   }   |      |                    |  ../ |   "  |   <  |   >  |      |      |
+ * |------+------+------+-----+-------+------|                    |------+------+------+------+------+------|
+ * |      |   !  |   _  |  (  |   )   |   \  |-------.    ,-------|   |  |   =  |   -  |   +  |   %  |      |
+ * |------+------+------+-----+-------+------|       |    |       |------+------+------+------+------+------|
+ * |      |   ^  |   $  |  [  |   ]   |      |-------|    |-------|   `  |   :  |   ~  |   #  |   *  |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   |      |      |      | /       /       \ SPC  \  |      |      |      |
  *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -144,9 +148,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_SYMBOL] = LAYOUT(
   _______, _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
-  _______, KC_QUOT, KC_LABK, KC_RABK, KC_DQUO, _______,                      KC_SLSH, KC_AMPR, KC_LCBR, KC_RCBR, _______, _______,
-  _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_BSLS,                      KC_PIPE, KC_UNDS, KC_LPRN, KC_RPRN, KC_PERC, _______,
-  _______, KC_CIRC, KC_DLR , KC_LBRC, KC_RBRC, _______,  _______,  _______,  KC_GRV , KC_COLN, KC_TILD, KC_ASTR, _______, _______,
+  _______, _______, KC_SLSH, KC_LCBR, KC_RCBR, _______,                      UPDIR  , KC_DQUO, KC_LABK, KC_RABK, _______, _______,
+  _______, KC_PERC, KC_UNDS, KC_LPRN, KC_RPRN, KC_BSLS,                      KC_PIPE, KC_EQL , KC_MINS, KC_PLUS, KC_EXLM, _______,
+  _______, KC_CIRC, KC_DLR , KC_LBRC, KC_RBRC, _______,  _______,  _______,  KC_GRV , KC_COLN, KC_TILD, KC_HASH, KC_ASTR, _______,
                             _______, _______, _______,  _______,    KC_SPC ,  _______, _______, _______
 ),
 
@@ -170,7 +174,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LBRC, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                    KC_6   , KC_7   , KC_8   , KC_9  ,  KC_0   , KC_RBRC,
   KC_BSLS, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_EQL ,
   _______, KC_UNDS, KC_EQL , KC_LBRC, KC_RBRC, _______, _______,  _______, KC_GRV , KC_MINS, _______, _______, _______, _______,
-                            _______, _______, _______, _______,    _______, _______, _______, _______
+                            _______, _______, _______, KC_SPC ,    _______, _______, _______, _______
 ),
 
 /* Navigation
@@ -256,3 +260,15 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
   _______, _______, _______, _______, _______, _______,  _______,  _______,  _______, _______, _______, _______, _______, _______,
                             _______, _______, _______,  _______,    _______,  _______, _______, _______
 ) */
+
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+    switch (keycode) {
+        case UPDIR:
+        if (record ->event.pressed) {
+                SEND_STRING("../");
+            }
+        return false;
+
+    }
+    return true;
+}
