@@ -19,6 +19,7 @@
 
 enum custom_layers {
     _COLEMAK,
+    _GRALMAK,
     _RL, // Layer for roguelikes, pairs with a numpad on _NAVRL
     _GAME,
     _SYMBOL,
@@ -95,6 +96,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_G,                     KC_J,  KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
   ESCNAV,   HOME_A, HOME_R,  HOME_S,  HOME_T,  KC_D,                     KC_H,  HOME_N,  HOME_E,  HOME_I,  HOME_O,  KC_QUOT,
   KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,   KC_MUTE,   KC_NO, KC_K,  KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SftEnt,
+                     MEH_T(KC_DEL), KC_LALT, ESCNAV, BSPCSYM,       SPCNUM, KC_UNDS, FKEY, KC_RALT
+),
+
+/* Gralmak Layer
+ * ,-----------------------------------------.                    ,-----------------------------------------.
+ * |  `~  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  | MPLY |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * | Tab  |   B  |   L  |   D  |   W  |   Z  |                    |   J  |   F  |   F  |   U  |   '  | BSP  |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * |EscNAV|   N  |   R  |   T  |   S  |   G  |-------.    ,-------|   Y  |   H  |   A  |   E  |   I  |  '   |
+ * |------+------+------+------+------+------|   NO  |    |   NO  |------+------+------+------+------+------|
+ * |LShift|   Z  |   X  |   M  |   C  |   V  |-------|    |-------|   K  |   P  |   ,  |   .  |   /  |EntSft|
+ * `-----------------------------------------/       /     \      \-----------------------------------------'
+ *                   | Del  | LGUI | ESC/ | /BS/SYM /       \Space \  |   _  | FKEY | RALT |
+ *                   |      |      | NAV  |/       /         \      \ |      |      |      |
+ *                   `----------------------------'           '------''--------------------'
+ */
+
+ [_GRALMAK] = LAYOUT(
+  KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,  KC_7,    KC_8,    KC_9,    KC_0,    KC_MPLY,
+  KC_TAB,   KC_B,   KC_L,    KC_D,    KC_W,    KC_Z,                     KC_J,  KC_F,    KC_O,    KC_U,    KC_QUOT, KC_BSPC,
+  ESCNAV,   LALT_T(KC_N), HOME_R, LSFT_T(KC_T), LCTL_T(KC_S), KC_G,      KC_Y,  RCTL_T(KC_H), RSFT_T(KC_A), LGUI_T(KC_E), LALT_T(KC_I),  KC_SCLN,
+  KC_LSFT,  KC_Q,   KC_X,    KC_M,    KC_C,    KC_V,   KC_MUTE,   KC_NO, KC_K,  KC_P,    KC_COMM, KC_DOT,  KC_SLSH, SftEnt,
                      MEH_T(KC_DEL), KC_LALT, ESCNAV, BSPCSYM,       SPCNUM, KC_UNDS, FKEY, KC_RALT
 ),
 
