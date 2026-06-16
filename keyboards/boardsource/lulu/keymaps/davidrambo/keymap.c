@@ -43,6 +43,7 @@ enum custom_keycodes {
 
 // aliases for clarity in layering
 #define SftEnt SFT_T(KC_ENT) // Shift when held, Enter when tapped
+#define OS_SFT OSM(MOD_LSFT)
 #define C_TAB LCTL(KC_TAB)
 #define A_TAB LALT(KC_TAB)
 #define CRGHT LCTL(KC_RGHT)
@@ -102,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,   KC_B,   KC_L,    KC_D,    KC_W,    KC_Z,                     KC_QUOT,KC_F,   KC_O,    KC_U,    KC_J,    KC_BSPC,
   ESCNAV,   HOME_N, HOME_R,  HOME_T,  HOME_S,  KC_G,                     KC_Y,  HOME_H,  HOME_A,  HOME_E,  HOME_I,  KC_SCLN,
   KC_LSFT,  KC_Q,   KC_X,    KC_M,    KC_C,    KC_V,   KC_MUTE,   KC_NO, KC_K,  KC_P,    KC_COMM, KC_DOT,  KC_SLSH, SftEnt,
-                     MEH_T(KC_DEL), KC_LALT, ESCNAV, BSPCSYM,       SPCNUM, KC_UNDS, FKEY, KC_RALT
+                     MEH_T(KC_DEL), KC_LALT, OS_SFT, BSPCSYM,       SPCNUM, KC_UNDS, FKEY, KC_RALT
 ),
 
  [_RL] = LAYOUT(
