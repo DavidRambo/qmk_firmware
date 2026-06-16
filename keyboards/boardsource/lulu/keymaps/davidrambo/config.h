@@ -22,9 +22,8 @@
 #define CAPS_WORD_IDLE_TIMEOUT 5000  // 5 seconds.
 
 #define TAPPING_TERM 190
-#define QUICK_TAP_TERM 50
-/*#define PERMISSIVE_HOLD*/
-#define TAPPING_FORCE_HOLD
+#define QUICK_TAP_TERM 100
+#define FLOW_TAP_TERM 150
 
 #ifdef RGB_MATRIX_ENABLE
     #define RGB_DISABLE_WHEN_USB_SUSPENDED  // turn off effects when suspended
