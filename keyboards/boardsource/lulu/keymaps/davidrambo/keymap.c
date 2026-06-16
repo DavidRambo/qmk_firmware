@@ -74,12 +74,18 @@ const uint16_t PROGMEM esc_combo[]  = {KC_D, KC_W, COMBO_END};
 const uint16_t PROGMEM ent_combo[]  = {KC_P, KC_COMM, COMBO_END};
 const uint16_t PROGMEM lpar_combo[] = {HOME_T, HOME_E, COMBO_END};
 const uint16_t PROGMEM rpar_combo[] = {HOME_S, HOME_I, COMBO_END};
+const uint16_t PROGMEM kc_m_combo[]  = {KC_X, KC_C, COMBO_END}; // For quick "m" access in gaming layer.
+const uint16_t PROGMEM kc_g_combo[]  = {KC_Z, KC_X, COMBO_END}; // For quick "g" access in gaming layer.
+const uint16_t PROGMEM kc_i_combo[]  = {KC_C, KC_V, COMBO_END}; // For quick "i" access in gaming layer.
 
 combo_t key_combos[] = {
     COMBO(esc_combo, KC_ESC),
     COMBO(ent_combo, KC_ENT),
     COMBO(lpar_combo, KC_LPRN),
     COMBO(rpar_combo, KC_RPRN),
+    COMBO(kc_m_combo, KC_M),
+    COMBO(kc_g_combo, KC_G),
+    COMBO(kc_i_combo, KC_I),
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -125,7 +131,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |  TAB | LSFT |  S   |  A   |  D   |  F   |-------.    ,-------|      |      |      |      |      |      |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * | LALT | LCTL |  Z   |  X   |  C   |  V   |-------|    |-------|      |      |      |      |      |      |
+ * | LALT | LCTL |  Z  (G) X  (M) C  (I) V   |-------|    |-------|      |      |      |      |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   |      |      |      | /  SPC  /       \      \  |      |      |      |
  *                   |   G  |   I  |  B   |/       /         \      \ |      |      |      |
