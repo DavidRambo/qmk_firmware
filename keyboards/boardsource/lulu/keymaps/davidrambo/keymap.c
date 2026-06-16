@@ -33,6 +33,9 @@ enum custom_layers {
 
 enum custom_keycodes {
     UPDIR = SAFE_RANGE,
+    ZT,
+    ZZ,
+    ZB,
 };
 
 // Layer Toggles
@@ -170,7 +173,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |  \|  |   !  |   @  |   #  |   $  |   %  |-------.    ,-------|   ^  |   &  |   *  |   (  |   )  |   =  |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |      |   _  |   =  |   [  |   ]  |      |-------|    |-------|  `~  |  -_  |      |      |      |      |
+ * |      | TAB  |      |      |      |      |-------|    |-------|      |   —  |      |      |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   | ____ | ____ | ____ | / ____  /       \ ____ \  |      |      | ____ |
  *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -179,8 +182,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_NUMROW] = LAYOUT(
   KC_F12 , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  ,                    KC_F6  , KC_F7  , KC_F8  , KC_F9 ,  KC_F10 , KC_F11 ,
   _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                    KC_6   , KC_7   , KC_8   , KC_9  ,  KC_0   , _______,
-  KC_BSLS, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_EQL ,
-  _______, KC_TAB , _______, KC_LBRC, KC_RBRC, _______, _______,  _______, KC_GRV ,UC(L'—'), _______, _______, _______, _______,
+  _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_EQL ,
+  _______, KC_TAB , _______, ZT     , ZZ     , ZB     , _______,  _______, _______,UC(L'—'), _______, _______, _______, _______,
                             _______, _______, _______, KC_SPC ,    _______, _______, _______, _______
 ),
 
@@ -272,7 +275,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     switch (keycode) {
         case UPDIR:
         if (record ->event.pressed) {
-                SEND_STRING("../");
+                send_string("../");
+            }
+        return false;
+        case ZT:
+        if (record ->event.pressed) {
+                send_string("zt");
+            }
+        return false;
+        case ZZ:
+        if (record ->event.pressed) {
+                send_string("zz");
+            }
+        return false;
+        case ZB:
+        if (record ->event.pressed) {
+                send_string("zb");
             }
         return false;
     }
